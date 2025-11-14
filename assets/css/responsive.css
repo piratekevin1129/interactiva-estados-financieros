@@ -1,40 +1,64 @@
 @media (min-width: 1542px){
     #title-container{
         padding-top: 30px;
+        padding-left: 30px;
     }
 
     #title{
+        padding: 12px 25px;
+        border-radius: 30px;
         font-size: 24px;
+        margin-bottom: 20px;
     }
-
-
-    #formulario-content{
-        padding: 20px;
-    }
-
-
-    #card{
-        width: 700px;
-        margin-top: 40px;
-    }
-
-    .card-header{
-        padding: 15px 30px;
-    }
-
-    #card-header-title{
-        font-size: 21px;
-    }
-
-    #card-header-opcional{
-        font-size: 21px;
-    }
-
-    .card-body{
-        padding: 25px;
-    }
-
-    #card-body-txt{
+    #subtitle{
         font-size: 18px;
+    }
+
+    .thumbnail{
+        width: 200px;
+        height: 113px;
+        padding: 12px 12px;
+    }
+    .thumbnail > img{
+        width: 70px;
+        height: 70px;
+        top: 50%;
+        top: calc(50% - 35px);
+        top: -moz-calc(50% - 35px);
+        left: 50%;
+        left: calc(50% - 35px);
+        left: -moz-calc(50% - 35px);
+    }
+
+    .thumbnail-over{
+        width: 250px;
+        height: 141px;
+    }
+    .thumbnail-over2{
+        width: 225px;
+        height: 127px;
+    }
+
+    #informacion{
+        width: 400px;
+        left: 270px;
+    }
+
+    #informacion-txt h2{
+        font-size: 21px;
+        margin-bottom: 15px;
+    }
+    #informacion-txt p{
+        font-size: 16px;
+    }
+
+    #informacion-txt ul{
+        margin-top: 15px;
+    }
+    #informacion-txt li{
+        font-size: 16px;
+        padding-left: 25px;
+        
+        background-size: 18px;
     }
 }

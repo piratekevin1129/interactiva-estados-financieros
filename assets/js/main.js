@@ -67,9 +67,76 @@ function overZona(){
     over_mp3.play()
 }
 
+var thumbnails_coll = []
+function overThumbnail(t){
+    for(i = 0;i<thumbnails_coll.length;i++){
+        thumbnails_coll[i].className = 'thumbnail'
+    }
+    thumbnails_coll[t-1].className = 'thumbnail thumbnail-over'
+
+    if(t==1){
+        thumbnails_coll[t].className = 'thumbnail thumbnail-over2'
+    }else if(t==thumbnails_coll.length){
+        thumbnails_coll[t-2].className = 'thumbnail thumbnail-over2'
+    }else{
+        thumbnails_coll[t].className = 'thumbnail thumbnail-over2'
+        thumbnails_coll[t-2].className = 'thumbnail thumbnail-over2'
+    }
+
+    over_mp3.currentTime = 0
+    over_mp3.play()
+}
+
+function outThumbnail(){
+    for(i = 0;i<thumbnails_coll.length;i++){
+        thumbnails_coll[i].className = 'thumbnail'
+    }
+}
+
+var actual_rollo = 1
+var animacion_rollo = null;
+var animating_rollo = false;
+var global_audio = null;
+
+function clickThumbnail(t){
+    if(!animating_rollo){
+        animating_rollo = true;
+        if(global_audio!=null){
+            global_audio.pause()
+        }
+
+        getE('rollo-wrap').className = 'rollo-'+actual_rollo+'-'+t
+        actual_rollo = t
+    
+        getE('informacion').className = 'informacion-off'
+
+        animacion_rollo = setTimeout(function(){
+            clearTimeout(animacion_rollo)
+            animacion_rollo = null;
+
+            var html_str = '<h2>'+global_data[t-1].title+'</h2>'+'<p>'+global_data[t-1].description+'</p>'
+            if(global_data[t-1].description2!=null&&global_data[t-1].description2!=undefined){
+                html_str+=global_data[t-1].description2
+            }
+            getE('informacion-txt').innerHTML = html_str
+            getE('informacion').className = 'informacion-on'
+            
+            animating_rollo = false;
+            global_audio = global_data[t-1].audio
+            global_audio.currentTime = 0
+            global_audio.play()
+            transicion_mp3.play()
+        },750)
+
+        click_mp3.currentTime = 0
+        click_mp3.play()
+    }
+}
+
 function setRollo(){
     var rollos = getE('rollo-wrap').getElementsByClassName('rollo-container')
     for(i = 0;i<rollos.length;i++){
         rollos[i].style.height = window.innerHeight+'px'
     }
+    thumbnails_coll = getE('thumbnails').getElementsByClassName('thumbnail')
 }

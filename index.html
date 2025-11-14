@@ -7,6 +7,7 @@
 
     <link href="assets/css/fonts.css" type="text/css" rel="stylesheet" />
     <link href="assets/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/rollos.css" type="text/css" rel="stylesheet" />
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/botones.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
@@ -14,7 +15,7 @@
 <body>
     <div id="container">
         <div id="rollo-wrapper">
-            <div id="rollo-wrap">
+            <div id="rollo-wrap" class="rollo-1-1">
                 <div class="rollo-container">
                     <img src="assets/images/1.png" />
                 </div>
@@ -31,19 +32,19 @@
         </div>
 
         <div id="thumbnails">
-            <div class="thumbnail">
+            <div class="thumbnail" onmouseenter="overThumbnail(1)" onmouseleave="outThumbnail()" onclick="clickThumbnail(1)">
                 <div class="thumbnail-img" style="background-image: url(assets/images/t1.png);"></div>
                 <img src="assets/images/icon-lupa.svg" />
             </div>
-            <div class="thumbnail">
+            <div class="thumbnail" onmouseenter="overThumbnail(2)" onmouseleave="outThumbnail()" onclick="clickThumbnail(2)">
                 <div class="thumbnail-img" style="background-image: url(assets/images/t2.png);"></div>
                 <img src="assets/images/icon-lupa.svg" />
             </div>
-            <div class="thumbnail">
+            <div class="thumbnail" onmouseenter="overThumbnail(3)" onmouseleave="outThumbnail()" onclick="clickThumbnail(3)">
                 <div class="thumbnail-img" style="background-image: url(assets/images/t3.png);"></div>
                 <img src="assets/images/icon-lupa.svg" />
             </div>
-            <div class="thumbnail">
+            <div class="thumbnail" onmouseenter="overThumbnail(4)" onmouseleave="outThumbnail()" onclick="clickThumbnail(4)">
                 <div class="thumbnail-img" style="background-image: url(assets/images/t4.png);"></div>
                 <img src="assets/images/icon-lupa.svg" />
             </div>
@@ -120,16 +121,14 @@
                                 global_data[3].audio = data
                                 loaderUpdate()
 
-                                    loadImg({src:'assets/images/fondo.png', callBack: function(data){
-                                        
-                                        setRollo()
-                                        //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
-                                        getE('sonido-btn').setAttribute('onclick','clickSonido()')
-                                        unsetLoader()
-        
-                                        //intro_mp3.play()
-                                        //clickSonido()
-                                    }})
+                                    setRollo()
+                                    clickThumbnail(1)
+                                    //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
+                                    getE('sonido-btn').setAttribute('onclick','clickSonido()')
+                                    unsetLoader()
+    
+                                    intro_mp3.play()
+                                    clickSonido()                                    
 
                                 }})
                                 }})
