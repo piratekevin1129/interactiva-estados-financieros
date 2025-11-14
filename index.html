@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estados financieros</title>
+
+    <link href="assets/css/fonts.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/botones.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="rollo-wrapper">
+            <div id="rollo-wrap">
+                <div class="rollo-container">
+                    <img src="assets/images/1.png" />
+                </div>
+                <div class="rollo-container">
+                    <img src="assets/images/2.png" />
+                </div>
+                <div class="rollo-container">
+                    <img src="assets/images/3.png" />
+                </div>
+                <div class="rollo-container">
+                    <img src="assets/images/4.png" />
+                </div>
+            </div>
+        </div>
+
+        <div id="thumbnails">
+            <div class="thumbnail">
+                <div class="thumbnail-img" style="background-image: url(assets/images/t1.png);"></div>
+                <img src="assets/images/icon-lupa.svg" />
+            </div>
+            <div class="thumbnail">
+                <div class="thumbnail-img" style="background-image: url(assets/images/t2.png);"></div>
+                <img src="assets/images/icon-lupa.svg" />
+            </div>
+            <div class="thumbnail">
+                <div class="thumbnail-img" style="background-image: url(assets/images/t3.png);"></div>
+                <img src="assets/images/icon-lupa.svg" />
+            </div>
+            <div class="thumbnail">
+                <div class="thumbnail-img" style="background-image: url(assets/images/t4.png);"></div>
+                <img src="assets/images/icon-lupa.svg" />
+            </div>
+        </div>
+
+        <div id="informacion" class="informacion-off">
+            <div id="informacion-txt"></div>
+        </div>
+
+        <div id="title-container">
+            <div id="title">Estados financieros en Colombia</div>
+            <div id="subtitle">Haz clic en cada ilustración para conocer más detalles.</div>
+        </div>
+    </div>
+
+    <div id="botones">
+        <button id="next-tema-btn" class="next-tema-on" onclick="clickSiguiente()"></button>
+        <button id="sonido-btn" class="sonido-off"></button>
+    </div>
+
+    <div id="loader" class="loader-on">
+        <div id="loader-img"></div>
+        <div id="loader-bar">
+            <div id="loader-bar2"></div>
+        </div>
+    </div>
+    
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        var background_mp3 = null;
+        var click_mp3 = null;
+        var over_mp3 = null;
+        var transicion_mp3 = null;
+        
+        var intro_mp3 = null;
+        var final_mp3 = null;
+        
+        window.onload = function(){
+            loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data){
+                background_mp3 = data
+                background_mp3.loop = true
+                background_mp3.volume = 0.3
+                loaderUpdate()
+
+                loadTrack({src: 'assets/sounds/click.mp3', callBack: function(data){
+                    click_mp3 = data
+                    loadTrack({src: 'assets/sounds/over.mp3', callBack: function(data){
+                        over_mp3 = data
+                        loadTrack({src: 'assets/sounds/transicion.mp3', callBack: function(data){
+                            transicion_mp3 = data
+                        
+                            loadTrack({src: 'assets/audios/intro.mp3', callBack: function(data){
+                            intro_mp3 = data
+                            loaderUpdate()
+                            
+                            loadTrack({src: 'assets/audios/final.mp3', callBack: function(data){
+                            final_mp3 = data
+                            loaderUpdate()
+
+                                loadTrack({src: 'assets/audios/1.mp3', callBack: function(data){
+                                global_data[0].audio = data
+                                loaderUpdate()
+
+                                loadTrack({src: 'assets/audios/2.mp3', callBack: function(data){
+                                global_data[1].audio = data
+                                loaderUpdate()
+
+                                loadTrack({src: 'assets/audios/3.mp3', callBack: function(data){
+                                global_data[2].audio = data
+                                loaderUpdate()
+
+                                loadTrack({src: 'assets/audios/4.mp3', callBack: function(data){
+                                global_data[3].audio = data
+                                loaderUpdate()
+
+                                    loadImg({src:'assets/images/fondo.png', callBack: function(data){
+                                        
+                                        setRollo()
+                                        //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
+                                        getE('sonido-btn').setAttribute('onclick','clickSonido()')
+                                        unsetLoader()
+        
+                                        //intro_mp3.play()
+                                        //clickSonido()
+                                    }})
+
+                                }})
+                                }})
+                                }})
+                                }})
+
+                            }})
+                            }})
+                        }})
+                    }})
+                }})
+            }})
+        }
+
+        var toggle_sonido = false
+        function clickSonido(){
+            if(!toggle_sonido){
+                toggle_sonido = true
+                getE('sonido-btn').className = 'sonido-on'
+                background_mp3.play()
+            }else{
+                toggle_sonido = false
+                getE('sonido-btn').className = 'sonido-off'
+                background_mp3.pause()
+            }
+        }
+
+        function clickSiguiente(){
+            parent.nextTema()
+        }
+    </script>
+</body>
+</html>

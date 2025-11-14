@@ -1,0 +1,40 @@
+@media (min-width: 1542px){
+    #title-container{
+        padding-top: 30px;
+    }
+
+    #title{
+        font-size: 24px;
+    }
+
+
+    #formulario-content{
+        padding: 20px;
+    }
+
+
+    #card{
+        width: 700px;
+        margin-top: 40px;
+    }
+
+    .card-header{
+        padding: 15px 30px;
+    }
+
+    #card-header-title{
+        font-size: 21px;
+    }
+
+    #card-header-opcional{
+        font-size: 21px;
+    }
+
+    .card-body{
+        padding: 25px;
+    }
+
+    #card-body-txt{
+        font-size: 18px;
+    }
+}
