@@ -99,10 +99,18 @@ html,body{
     position: absolute;
     width: auto;
     height: auto;
-    left: 0px;
     top: 50%;
     transform: translateY(-50%);
+
+    transition: left 0.5s;
 }
+.thumbnails-on{
+    left: 0px;
+}
+.thumbnails-off{
+    left: -250px;
+}
+
 .thumbnail{
     position: relative;
     width: 150px;

@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div id="thumbnails">
+        <div id="thumbnails" class="thumbnails-off">
             <div class="thumbnail" onmouseenter="overThumbnail(1)" onmouseleave="outThumbnail()" onclick="clickThumbnail(1)">
                 <div class="thumbnail-img" style="background-image: url(assets/images/t1.png);"></div>
                 <img src="assets/images/icon-lupa.svg" />
@@ -51,7 +51,12 @@
         </div>
 
         <div id="informacion" class="informacion-off">
-            <div id="informacion-txt"></div>
+            <div id="informacion-txt">
+                <h2>Estados Financieros en Colombia</h2>
+                <p>La ley colombiana exige varios estados financieros, pero los más comunes son:</p>
+                <br>
+                <p>Haz clic en cada ilustración para conocer más detalles.</p>
+            </div>
         </div>
 
         <div id="title-container">
@@ -122,13 +127,18 @@
                                 loaderUpdate()
 
                                     setRollo()
-                                    clickThumbnail(1)
                                     //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
                                     getE('sonido-btn').setAttribute('onclick','clickSonido()')
+                                    clickSonido()
+                                    
+                                    getE('thumbnails').className = 'thumbnails-on'
+                                    getE('informacion').className = 'informacion-on'
                                     unsetLoader()
-    
+                                    
                                     intro_mp3.play()
-                                    clickSonido()                                    
+                                    intro_mp3.onended = function(){
+                                        clickThumbnail(1)
+                                    }
 
                                 }})
                                 }})

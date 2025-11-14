@@ -45,22 +45,27 @@ function getE(idname){
 var global_data = [{
     title:'Estado de Situación Financiera (Balance General)',
     description:'Muestra los activos, pasivos y patrimonio de la entidad en una fecha determinada.',
-    audio:null
+    audio:null,
+    visto:false
 },{
     title:'Estado de Resultados Integral',
     description:'Presenta los ingresos, costos, gastos y utilidad o pérdida del período.',
-    audio:null
+    audio:null,
+    visto:false
 },{
     title:'Estado de Cambios en el Patrimonio',
     description:'Refleja las variaciones en el patrimonio de los propietarios durante el período.',
-    audio:null
+    audio:null,
+    visto:false
 },{
     title:'Estado de Flujos de Efectivo',
     description:'Los movimientos de dinero en efectivo, clasificados en:',
     description2:'<ul><li>Actividades operativas</li><li>Actividades de inversión</li><li>Actividades de financiación</li></ul>',
-    audio:null
+    audio:null,
+    visto:false
 }]
 
+var modulos_vistos = false;
 
 function overZona(){
     over_mp3.currentTime = 0
@@ -104,6 +109,8 @@ function clickThumbnail(t){
         if(global_audio!=null){
             global_audio.pause()
         }
+        intro_mp3.pause()
+        intro_mp3.onended = null
 
         getE('rollo-wrap').className = 'rollo-'+actual_rollo+'-'+t
         actual_rollo = t
@@ -123,6 +130,7 @@ function clickThumbnail(t){
             
             animating_rollo = false;
             global_audio = global_data[t-1].audio
+            global_data[t-1].visto = true
             global_audio.currentTime = 0
             global_audio.play()
             transicion_mp3.play()
